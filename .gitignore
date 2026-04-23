@@ -22,3 +22,13 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Claude Code
+.claude/
+.claude.json
+.mcp.json
+
+# Env
+.env
+.env.local
+.env.*.local
