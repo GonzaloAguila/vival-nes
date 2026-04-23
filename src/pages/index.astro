@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { products } from '../data/products.ts';
+---
+
+<Layout title="VIVAL-NES — Consolas, juegos y accesorios retro">
+  <section class="hero">
+    <p class="hero-tag">PRESS START</p>
+    <h1 class="hero-title">VIVAL-NES</h1>
+    <p class="hero-sub">
+      La tienda retro de Nintendo en Argentina. Consolas, cartuchos y fierros para tu cueva gamer.
+    </p>
+  </section>
+
+  <section class="catalogo">
+    <h2 class="catalogo-titulo">Catálogo</h2>
+    <div class="grid">
+      {products.map((product) => (
+        <ProductCard product={product} />
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    padding: 3rem 1.5rem;
+    text-align: center;
+    background-color: var(--color-primario);
+    border-bottom: var(--borde-grueso);
+    color: var(--color-acento);
+  }
+
+  .hero-tag {
+    font-family: var(--font-titulo);
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    color: var(--color-borde);
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-family: var(--font-titulo);
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: var(--color-acento);
+    text-shadow: var(--sombra-dura);
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-sub {
+    font-family: var(--font-cuerpo);
+    font-size: 1.3rem;
+    max-width: 42rem;
+    margin: 0 auto;
+    color: var(--color-acento);
+  }
+
+  .catalogo {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+
+  .catalogo-titulo {
+    font-family: var(--font-titulo);
+    font-size: 1.1rem;
+    color: var(--color-acento);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: var(--borde-grueso);
+    border-bottom-color: var(--color-primario);
+    letter-spacing: 2px;
+  }
+
+  /* Grid responsive: 4 / 2 / 1 columnas */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 1000px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

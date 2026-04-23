@@ -1,0 +1,71 @@
+---
+// Header con logo a la izquierda y nav dummy a la derecha.
+const enlaces = [
+  { href: '#', label: 'Inicio' },
+  { href: '#', label: 'Consolas' },
+  { href: '#', label: 'Juegos' },
+  { href: '#', label: 'Accesorios' },
+];
+---
+
+<header class="site-header">
+  <div class="logo">VIVAL-NES</div>
+  <nav class="nav">
+    {enlaces.map((enlace) => (
+      <a href={enlace.href}>{enlace.label}</a>
+    ))}
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background-color: var(--color-fondo);
+    border-bottom: var(--borde-grueso);
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    font-family: var(--font-titulo);
+    color: var(--color-primario);
+    font-size: 1.1rem;
+    padding: 0.6rem 0.9rem;
+    background-color: var(--color-acento);
+    border: var(--borde-grueso);
+    box-shadow: var(--sombra-dura);
+    letter-spacing: 2px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .nav a {
+    font-family: var(--font-titulo);
+    font-size: 0.7rem;
+    color: var(--color-texto);
+    padding: 0.4rem 0.2rem;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.1s linear, color 0.1s linear;
+  }
+
+  .nav a:hover,
+  .nav a:focus {
+    color: var(--color-primario);
+    border-bottom-color: var(--color-primario);
+  }
+
+  @media (max-width: 600px) {
+    .nav {
+      gap: 1rem;
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+</style>
