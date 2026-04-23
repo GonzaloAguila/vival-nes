@@ -15,11 +15,19 @@ const formatoARS = new Intl.NumberFormat('es-AR', {
 });
 
 const precioFormateado = formatoARS.format(product.price);
+
+type EstadoStock = 'bajo' | 'agotado' | null;
+const estadoStock: EstadoStock =
+  product.stock === 0 ? 'agotado' : product.stock <= 3 ? 'bajo' : null;
+const textoStock = estadoStock === 'agotado' ? 'Sin stock' : '¡Ultimas unidades!';
 ---
 
 <article class="card">
   <div class="card-img-wrapper">
     <img src={product.image} alt={product.name} loading="lazy" width="300" height="300" />
+    {estadoStock && (
+      <span class={`badge badge--stock-${estadoStock} badge--sobre-imagen`}>{textoStock}</span>
+    )}
   </div>
   <div class="card-body">
     <span class={`badge badge--${product.category}`}>{product.category}</span>
@@ -46,6 +54,7 @@ const precioFormateado = formatoARS.format(product.price);
   }
 
   .card-img-wrapper {
+    position: relative;
     border-bottom: var(--borde-grueso);
     background-color: var(--color-primario);
     aspect-ratio: 1 / 1;
@@ -79,6 +88,14 @@ const precioFormateado = formatoARS.format(product.price);
     letter-spacing: 1px;
   }
 
+  .badge--sobre-imagen {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    box-shadow: var(--sombra-dura);
+    z-index: 1;
+  }
+
   .badge--consola {
     background-color: var(--color-primario);
     color: var(--color-acento);
@@ -92,6 +109,16 @@ const precioFormateado = formatoARS.format(product.price);
   .badge--accesorio {
     background-color: var(--color-acento);
     color: var(--color-borde);
+  }
+
+  .badge--stock-bajo {
+    background-color: var(--color-primario);
+    color: var(--color-acento);
+  }
+
+  .badge--stock-agotado {
+    background-color: var(--color-gris);
+    color: var(--color-acento);
   }
 
   .card-title {
