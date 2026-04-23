@@ -1,5 +1,5 @@
 ---
-description: Deployar la branch actual como preview en Vercel
+description: Deploy the current branch as a Vercel preview
 ---
 
-Seguí el runbook @.claude/flows/deploy-preview.md para la branch actualmente activa.
+Follow the runbook @.claude/flows/deploy-preview.md for the currently active branch.

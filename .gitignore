@@ -26,6 +26,7 @@ pnpm-debug.log*
 # Claude Code
 .claude/*
 !.claude/flows/
+!.claude/commands/
 .claude.json
 .mcp.json
 

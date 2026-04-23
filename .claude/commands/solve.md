@@ -1,5 +1,5 @@
 ---
-description: Resolver un ticket de Jira siguiendo el runbook implement-ticket
+description: Solve a Jira ticket following the implement-ticket runbook
 ---
 
-Seguí el runbook @.claude/flows/implement-ticket.md para resolver el ticket $ARGUMENTS.
+Follow the runbook @.claude/flows/implement-ticket.md to solve ticket $ARGUMENTS.
