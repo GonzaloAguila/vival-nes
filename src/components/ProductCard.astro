@@ -15,10 +15,15 @@ const formatoARS = new Intl.NumberFormat('es-AR', {
 });
 
 const precioFormateado = formatoARS.format(product.price);
+
+const stockBajo = product.stock > 0 && product.stock <= 3;
+const sinStock = product.stock === 0;
 ---
 
 <article class="card">
   <div class="card-img-wrapper">
+    {stockBajo && <span class="badge-stock badge-stock--bajo">¡Últimas unidades!</span>}
+    {sinStock && <span class="badge-stock badge-stock--agotado">Sin stock</span>}
     <img src={product.image} alt={product.name} loading="lazy" width="300" height="300" />
   </div>
   <div class="card-body">
@@ -46,10 +51,34 @@ const precioFormateado = formatoARS.format(product.price);
   }
 
   .card-img-wrapper {
+    position: relative;
     border-bottom: var(--borde-grueso);
     background-color: var(--color-primario);
     aspect-ratio: 1 / 1;
     overflow: hidden;
+  }
+
+  .badge-stock {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-family: var(--font-titulo);
+    font-size: 0.5rem;
+    padding: 0.35rem 0.5rem;
+    border: 2px solid var(--color-borde);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 1;
+  }
+
+  .badge-stock--bajo {
+    background-color: var(--color-primario);
+    color: var(--color-acento);
+  }
+
+  .badge-stock--agotado {
+    background-color: var(--color-fondo);
+    color: var(--color-acento);
   }
 
   .card-img-wrapper img {
