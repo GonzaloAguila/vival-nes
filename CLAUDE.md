@@ -111,3 +111,6 @@ Definidas en `src/styles/global.css`:
 - Mantené la estética pixel: bordes duros, sin border-radius > 2px, sombras sólidas estilo `4px 4px 0 #000`.
 - Todos los textos de UI en español.
 - Antes de modificar un componente existente, leelo completo para respetar las convenciones aplicadas.
+
+## Notas
+- Última actualización: abril 2026.
